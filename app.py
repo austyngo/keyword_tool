@@ -1,5 +1,6 @@
 import pandas as pd 
-from nltk import pos_tag, word_tokenize
+from nltk.tag import pos_tag
+from nltk.tokenize import word_tokenize
 from nltk.corpus import wordnet, stopwords
 from nltk.stem import WordNetLemmatizer
 import string
