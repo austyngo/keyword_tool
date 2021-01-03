@@ -1,5 +1,5 @@
 import pandas as pd 
-import nltk
+from nltk import pos_tag, word_tokenize
 from nltk.corpus import wordnet, stopwords
 from nltk.stem import WordNetLemmatizer
 import string
@@ -23,7 +23,7 @@ def nltk_to_wn_tag(nltk_tag):
     elif nltk_tag.startswith('N'):
         return wordnet.NOUN
     elif nltk_tag.startswith('R'):
-        return wordnet.ADV
+        return wordnet.ADVnl
     else:          
         return None
 
@@ -32,7 +32,7 @@ punc = set(string.punctuation)
 
 def lem_clean(doc):
     #tokenize the sentence and find the POS tag for each token
-    nltk_tagged = nltk.pos_tag(nltk.word_tokenize(doc))  
+    nltk_tagged = pos_tag(word_tokenize(doc))  
     #tuple of (token, wordnet_tag)
     wordnet_tagged = map(lambda x: (x[0], nltk_to_wn_tag(x[1])), nltk_tagged)
     lem_sent = []
