@@ -23,7 +23,7 @@ def nltk_to_wn_tag(nltk_tag):
     elif nltk_tag.startswith('N'):
         return wordnet.NOUN
     elif nltk_tag.startswith('R'):
-        return wordnet.ADVnl
+        return wordnet.ADV
     else:          
         return None
 
