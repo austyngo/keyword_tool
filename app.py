@@ -10,6 +10,14 @@ import streamlit as st
 import plotly.express as px
 
 st.title('Keyword Extractor')
+st.markdown('This app returns the most common words in the inputted body of text.')
+st.write('Features include:')
+
+"""
+* Lemmatize words (converting words to root forms)
+* Expand contractions 
+* Remove stopwords and punctuation"""
+
 text = st.text_area('Paste text here: ').lower()
 text_contract_fixed = contractions.fix(text)
 
@@ -62,7 +70,7 @@ def word_freq(tokenized_text):
             freq_list.append(tokenized_text.count(word))
     
     frequency_df = pd.DataFrame({'Keyword':word_list, 'Frequency': freq_list}).sort_values(by=['Frequency'], ascending=False).reset_index()
-    return frequency_df
+    return frequency_df.drop('index', axis =1)
 
 df = word_freq(text_clean)
 
