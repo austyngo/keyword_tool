@@ -75,3 +75,6 @@ top10 = df.iloc[:10].sort_values(by=['Frequency'], ascending=False)
 
 fig = px.bar(top10, y='Frequency', x= 'Keyword', color = 'Keyword', color_discrete_sequence=px.colors.qualitative.Prism, title='Top 10 Words', template='ggplot2')
 st.plotly_chart(fig, use_container_width=True)
+
+st.write('Created by [austyngo](https://github.com/austyngo).')
+st.write('Code available in my [GitHub repository](https://github.com/austyngo/keyword_tool).')
